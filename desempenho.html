@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desempenho e Resultados – Auditoria Concorrente</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+* { box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: #F4F6F8; color: #222; }
+.page { max-width: 1280px; margin: 0 auto; padding: 26px 22px 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; }
+h1 { font-size: 24px; color: #1F4E78; margin: 0 0 4px; }
+.subtitle { font-size: 13.5px; color: #595959; margin-bottom: 4px; }
+.back-link { font-size: 12.5px; color: #1F4E78; text-decoration: none; border: 1px solid #1F4E78;
+  border-radius: 14px; padding: 5px 14px; font-weight: bold; }
+.back-link:hover { background:#1F4E78; color:#fff; }
+.section-title { font-size: 16px; font-weight: bold; color: #1F4E78; margin: 30px 0 12px;
+  border-bottom: 2px solid #DDEBF7; padding-bottom: 6px; }
+.cards-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.card { background: #fff; border-radius: 10px; padding: 16px 20px; min-width: 190px; flex: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08); border-top: 4px solid #1F4E78; }
+.card.before { border-top-color: #C00000; }
+.card.after  { border-top-color: #2E7D32; }
+.card.neutral{ border-top-color: #ED7D31; }
+.card-label { font-size: 11px; color: #595959; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+.card-value { font-size: 34px; font-weight: bold; color: #1F4E78; line-height: 1; }
+.card.before .card-value { color: #C00000; }
+.card.after  .card-value { color: #2E7D32; }
+.card.neutral .card-value { color: #ED7D31; }
+.card-sub { font-size: 12px; color: #898989; margin-top: 8px; }
+.delta-pill { display:inline-block; margin-top:8px; font-size: 12.5px; font-weight: bold;
+  background: #E8F5E9; color: #2E7D32; border-radius: 12px; padding: 3px 12px; }
+.charts-row { display: flex; flex-wrap: wrap; gap: 18px; }
+.chart-box { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  flex: 1; min-width: 480px; }
+.chart-box h3 { margin: 0 0 12px; font-size: 14px; color: #1F4E78; }
+.chart-wrap { position: relative; height: 320px; }
+table { border-collapse: collapse; width: 100%; background: #fff; font-size: 13px; }
+th, td { border: 1px solid #D9D9D9; padding: 8px 10px; }
+th { background: #1F4E78; color: #fff; font-size: 12px; }
+tbody tr:hover { background: #F7FAFC; }
+.center { text-align: center; }
+.hosp-badge { display:inline-block; font-size: 11px; font-weight:bold; color:#fff; border-radius: 10px; padding: 2px 10px; }
+.hosp-badge.hsvp { background: #ED7D31; }
+.hosp-badge.hsja { background: #7030A0; }
+.metodologia { background:#EBF3FB; border-left: 4px solid #1F4E78; border-radius: 6px;
+  padding: 12px 16px; font-size: 12.5px; color:#444; margin-top: 34px; line-height: 1.55; }
+.highlight-banner { background: linear-gradient(90deg, #1F4E78, #2E75B6); color:#fff; border-radius: 10px;
+  padding: 18px 24px; margin: 26px 0 4px; font-size: 15px; line-height: 1.5; }
+.highlight-banner b { font-size: 18px; }
+.footer-note { margin-top: 40px; font-size: 11px; color: #898989; }
+@media print { .back-link { display:none; } .chart-wrap { height: 300px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topbar">
+    <div>
+      <h1>DESEMPENHO E RESULTADOS – AUDITORIA CONCORRENTE</h1>
+      <div class="subtitle">Diretoria Executiva · Prestadores: Hospital São Vicente de Paulo (HSVP) e Hospital São José do Avaí (HSJA) · Período: 15/06/2026 a 09/10/2026</div>
+    </div>
+    <a class="back-link" href="index.html">← Voltar ao Censo</a>
+  </div>
+
+  <div class="section-title">Ponto de Partida — 15/06/2026 (início da auditoria concorrente)</div>
+  <div class="cards-row">
+    <div class="card before"><div class="card-label">Pacientes internados</div><div class="card-value">34</div><div class="card-sub">HSVP + HSJA</div></div>
+    <div class="card before"><div class="card-label">Longa Permanência (&gt;5 dias)</div><div class="card-value">21</div><div class="card-sub">62% dos internados</div></div>
+    <div class="card before"><div class="card-label">Cenário</div><div class="card-value" style="font-size:20px; padding-top:8px;">Sem gestão ativa</div><div class="card-sub">casos LP acumulados sem revisão sistemática</div></div>
+  </div>
+
+  <div class="section-title">Situação Atual — 09/10/2026</div>
+  <div class="cards-row">
+    <div class="card after"><div class="card-label">Pacientes internados</div><div class="card-value">20</div><div class="card-sub">HSVP + HSJA</div></div>
+    <div class="card after"><div class="card-label">Longa Permanência (&gt;5 dias)</div><div class="card-value">7</div><div class="card-sub">35% dos internados</div><span class="delta-pill">▼ 67% vs 15/06</span></div>
+    <div class="card neutral"><div class="card-label">Desospitalizações LP no período</div><div class="card-value">158</div><div class="card-sub">altas de pacientes &gt;5 dias entre 15/06 e 09/10</div></div>
+  </div>
+
+  <div class="highlight-banner">
+    Após o início da atuação da auditoria concorrente, os casos de longa permanência caíram de
+    <b>21</b> para <b>7</b> (<b>−67%</b>), com <b>158 desospitalizações</b>
+    de pacientes com mais de 5 dias de internação no período — resultado da revisão diária de censo,
+    discussão de casos com os prestadores e articulação de altas.
+  </div>
+
+  <div class="section-title">Destaques do Período</div>
+  <div class="highlight-banner" style="background:#E8F5E9; border-color:#2E7D32;">
+    ⭐ <b>Alta do caso mais longo da série:</b> Jade Maria Martins Grillo (HSJA),
+    <b>143 dias</b> de internação (desde 20/03/2026),
+    desospitalização registrada em <b>11/08/2026</b>. Da coorte inicial de 15/06 (21 pacientes LP), restam 2 internados.
+  </div>
+  <div style="overflow-x:auto;">
+  <table>
+    <thead><tr><th>Hospital</th><th>Paciente</th><th>Dias internado</th><th>Internação</th><th>Alta registrada</th></tr></thead>
+    <tbody><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Jade Maria Martins Grillo</td><td class='center'><b>143</b></td><td>20/03/2026</td><td>11/08/2026</td></tr><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Nelio Jose Monteiro</td><td class='center'><b>83</b></td><td>25/04/2026</td><td>20/07/2026</td></tr><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Sebastiao Goncalves da Cunha</td><td class='center'><b>74</b></td><td>04/05/2026</td><td>20/07/2026</td></tr><tr><td><span class='hosp-badge hsvp'>HSVP</span></td><td>Marina Teixeira Coelho</td><td class='center'><b>64</b></td><td>13/04/2026</td><td>17/06/2026</td></tr><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Antonio Carlos Tavares</td><td class='center'><b>42</b></td><td>05/06/2026</td><td>20/07/2026</td></tr><tr><td><span class='hosp-badge hsvp'>HSVP</span></td><td>Marina Teixeira Coelho</td><td class='center'><b>39</b></td><td>28/08/2026</td><td>07/10/2026</td></tr><tr><td><span class='hosp-badge hsvp'>HSVP</span></td><td>Carlos Luiz Dutra</td><td class='center'><b>38</b></td><td>26/05/2026</td><td>06/07/2026</td></tr><tr><td><span class='hosp-badge hsvp'>HSVP</span></td><td>Nayla Patusco Eisenlohr</td><td class='center'><b>36</b></td><td>14/05/2026</td><td>22/06/2026</td></tr></tbody>
+  </table>
+  </div>
+  <div class="footer-note" style="margin-top:6px;">Maiores desospitalizações de pacientes LP no período (dias na última presença em censo).</div>
+
+  <div class="section-title">Evolução Diária</div>
+  <div class="charts-row">
+    <div class="chart-box" style="flex:2;">
+      <h3>Internados × Longa Permanência (HSVP + HSJA) — por data de censo</h3>
+      <div class="chart-wrap"><canvas id="chSerie"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section-title">Comparativo Mensal</div>
+  <div class="charts-row">
+    <div class="chart-box">
+      <h3>Média diária de internados e de casos LP</h3>
+      <div class="chart-wrap"><canvas id="chMedias"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h3>Desospitalizações de pacientes LP por mês</h3>
+      <div class="chart-wrap"><canvas id="chDesosp"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section-title">Casos de Longa Permanência HOJE (09/10/2026) — 7 pacientes</div>
+  <div style="overflow-x:auto;">
+  <table>
+    <thead><tr><th>Hospital</th><th>Paciente</th><th>Dias</th><th>Setor</th><th>Leito</th><th>Acomodação</th><th>Internação</th></tr></thead>
+    <tbody><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Josiel Oliveira de Azevedo</td><td class='center'><b>41</b></td><td>CTI Terciario</td><td>CTITER01</td><td>CTI/UTI</td><td>29/08/2026</td></tr><tr><td><span class='hosp-badge hsvp'>HSVP</span></td><td>Maria da Conceicao de Souza Tavares</td><td class='center'><b>28</b></td><td>Ala B</td><td>AP.01 01</td><td>Apartamento</td><td>11/09/2026</td></tr><tr><td><span class='hosp-badge hsvp'>HSVP</span></td><td>Olivia Elias Abib Nassar</td><td class='center'><b>23</b></td><td>UTI 1</td><td>L15</td><td>CTI/UTI</td><td>16/09/2026</td></tr><tr><td><span class='hosp-badge hsvp'>HSVP</span></td><td>Jose Paulo da Rocha Oliveira</td><td class='center'><b>12</b></td><td>Anexo B</td><td>AP.125 125</td><td>Apartamento</td><td>27/09/2026</td></tr><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Flausina de Godoy Lichotti</td><td class='center'><b>11</b></td><td>ALA D</td><td>APT215</td><td>Apartamento</td><td>28/09/2026</td></tr><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Vivaldim Vieira Brum</td><td class='center'><b>7</b></td><td>CTI Central</td><td>CTICEN08</td><td>CTI/UTI</td><td>02/10/2026</td></tr><tr><td><span class='hosp-badge hsja'>HSJA</span></td><td>Adilceia Fonte Vieira</td><td class='center'><b>6</b></td><td>CTI Terciario</td><td>CTITER09</td><td>CTI/UTI</td><td>03/10/2026</td></tr></tbody>
+  </table>
+  </div>
+
+  <div class="metodologia">
+    <b>Metodologia:</b> Longa Permanência (LP) = paciente com mais de 5 dias de internação na data do censo.
+    Desospitalização LP = paciente em LP presente em um censo e ausente de todo o censo na data seguinte
+    (exclui transferências internas entre os hospitais monitorados). Escopo restrito aos prestadores
+    HSVP e HSJA. Fonte: censos diários consolidados pela auditoria concorrente (master_data.csv),
+    84 datas de censo entre 15/06/2026 e 09/10/2026. Dias sem censo (fins de semana/feriados)
+    não geram pontos na série.
+  </div>
+  <div class="footer-note">Gerado automaticamente a partir do dataset mestre. Dados sensíveis — uso restrito à Diretoria Executiva.</div>
+</div>
+<script>
+const DATA = {"labels": ["15/06", "16/06", "17/06", "18/06", "19/06", "22/06", "23/06", "24/06", "25/06", "26/06", "29/06", "30/06", "01/07", "02/07", "03/07", "06/07", "07/07", "08/07", "09/07", "10/07", "13/07", "14/07", "15/07", "16/07", "17/07", "20/07", "21/07", "22/07", "23/07", "24/07", "27/07", "28/07", "29/07", "30/07", "31/07", "03/08", "04/08", "05/08", "06/08", "07/08", "10/08", "11/08", "12/08", "13/08", "14/08", "17/08", "18/08", "19/08", "20/08", "21/08", "24/08", "25/08", "26/08", "27/08", "28/08", "31/08", "01/09", "02/09", "03/09", "04/09", "08/09", "09/09", "10/09", "11/09", "14/09", "15/09", "16/09", "17/09", "18/09", "21/09", "22/09", "23/09", "24/09", "25/09", "28/09", "29/09", "30/09", "01/10", "02/10", "05/10", "06/10", "07/10", "08/10", "09/10"], "lp": [21, 19, 20, 18, 18, 17, 14, 13, 13, 13, 12, 16, 15, 13, 12, 14, 16, 16, 15, 15, 15, 15, 15, 13, 16, 11, 15, 13, 11, 9, 9, 8, 6, 5, 7, 7, 8, 7, 7, 8, 10, 10, 11, 12, 11, 10, 12, 13, 13, 11, 9, 10, 8, 8, 8, 7, 6, 11, 8, 8, 8, 6, 7, 7, 6, 6, 7, 8, 8, 8, 8, 9, 8, 9, 10, 10, 14, 14, 11, 9, 10, 8, 7, 7], "internados": [34, 44, 40, 39, 35, 23, 28, 25, 25, 26, 26, 32, 34, 36, 36, 31, 35, 38, 34, 36, 31, 35, 36, 40, 45, 30, 33, 26, 29, 26, 20, 20, 17, 22, 19, 13, 22, 22, 26, 28, 26, 30, 27, 32, 31, 30, 35, 29, 34, 27, 21, 29, 29, 25, 28, 24, 25, 25, 31, 29, 18, 19, 23, 30, 15, 22, 23, 24, 26, 20, 26, 30, 25, 32, 25, 28, 31, 32, 31, 20, 20, 20, 20, 20], "meses": ["Junho", "Julho", "Agosto"], "mediaLp": [16.2, 12.3, 9.5], "mediaInt": [31.4, 30.8, 27.0], "desosp": [23, 56, 34], "desospHSVP": [9, 20, 13], "desospHSJA": [14, 36, 21]};
+const azul='#1F4E78', vermelho='#C00000', laranja='#ED7D31', roxo='#7030A0', verde='#2E7D32';
+new Chart(document.getElementById('chSerie'), {
+  type: 'line',
+  data: { labels: DATA.labels, datasets: [
+    { label: 'Internados (HSVP+HSJA)', data: DATA.internados, borderColor: azul, backgroundColor: 'rgba(31,78,120,.08)', fill: true, tension: .3, pointRadius: 2.5 },
+    { label: 'Longa Permanência (>5 dias)', data: DATA.lp, borderColor: vermelho, backgroundColor: 'rgba(192,0,0,.10)', fill: true, tension: .3, pointRadius: 2.5 }
+  ]},
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom' } },
+    scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+});
+new Chart(document.getElementById('chMedias'), {
+  type: 'bar',
+  data: { labels: DATA.meses, datasets: [
+    { label: 'Média internados/dia', data: DATA.mediaInt, backgroundColor: azul },
+    { label: 'Média LP/dia', data: DATA.mediaLp, backgroundColor: vermelho }
+  ]},
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom' } },
+    scales: { y: { beginAtZero: true } } }
+});
+new Chart(document.getElementById('chDesosp'), {
+  type: 'bar',
+  data: { labels: DATA.meses, datasets: [
+    { label: 'HSVP', data: DATA.desospHSVP, backgroundColor: laranja, stack: 's' },
+    { label: 'HSJA', data: DATA.desospHSJA, backgroundColor: roxo, stack: 's' }
+  ]},
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom' },
+      tooltip: { callbacks: { footer: (items) => 'Total: ' + items.reduce((a,i)=>a+i.parsed.y,0) } } },
+    scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true, ticks: { precision: 0 } } } }
+});
+</script>
+</body>
+</html>
